@@ -8,9 +8,10 @@
   
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
   <link rel="stylesheet" href="css/app.css"/>
-  <script src="js/jquery-1.11.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+  <script type="text/javascript" src="js/leaflet-hash.js"></script>
 </head>
 
 <body>
@@ -88,18 +89,33 @@
     // // ]).addTo(map).bindPopup("I am a polygon.");
 
 
-    // // Custom Ship Icon
-    // // var shipIcon = L.Icon.extend({
-    // //   options: {
-    // //       iconSize:     [17.7, 20],
-    // //       iconAnchor:   [22, 94],
-    // //       popupAnchor:  [-3, -76]
-    // //   }
-    // // });
+    // var shipIcon = L.icon({
+    //   iconUrl: 'leaf-green.png',
 
-    // // var blackShip = new shipIcon({iconUrl: 'assets/Ship_black.png'})
+    //   iconSize:     [38, 95], // size of the icon
+    //   iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    //   shadowAnchor: [4, 62],  // the same for the shadow
+    //   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    // });
 
-    // // L.marker([1.26813, 103.79715], {icon: blackShip}).addTo(map);
+
+    //Custom Ship Icon
+    var shipIcon = L.Icon.extend({
+      options: {
+          iconSize:     [17.7, 20], // size of the icon
+          iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      }
+    });
+
+    var blackShip = new shipIcon({iconUrl: 'assets/Ship_black.png'})
+
+    L.marker([1.26848, 103.79659], {icon: blackShip}).addTo(map);
+
+
+    //URL hash
+    var hash = new L.Hash(map);
+
 
   </script>
 
